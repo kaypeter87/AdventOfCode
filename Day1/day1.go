@@ -29,10 +29,19 @@ func main() {
 		nums = append(nums, perline)
 	}
 
-	var sum int = 0
+	var sum1 int = 0
+	var sum2 int = 0
+	var temp int = 0
+
 	for i := 0; i < len(nums); i++ {
-		sum += nums[i]/3 - 2
+		sum1 += nums[i]/3 - 2
+		temp = nums[i]
+		for temp/3-2 > 0 {
+			temp = temp/3 - 2
+			sum2 += temp
+		}
 	}
 
-	fmt.Println(sum)
+	fmt.Println("Part 1 puzzle answer: ", sum1)
+	fmt.Println("Part 2 puzzle answer: ", sum2)
 }
