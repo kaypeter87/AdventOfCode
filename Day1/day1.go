@@ -2,18 +2,37 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
-	"log"
+	"io"
 	"os"
 )
 
 func main() {
 	file, err := os.Open("input.txt")
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(err)
+		os.Exit(1)
 	}
-	defer file.Clone()
 
-	test, err := ioutil.ReadAll(file)
-	fmt.Print(test)
+	var perline int
+	var nums []int
+
+	for {
+		_, err := fmt.Fscanf(file, "%d\n", &perline)
+		if err != nil {
+			if err == io.EOF {
+				break
+			}
+			fmt.Println(err)
+			os.Exit(1)
+		}
+
+		nums = append(nums, perline)
+	}
+
+	var sum int
+	for i := 0; i < len(nums); i++ {
+		sum += sum + nums[i]
+	}
+
+	fmt.Println(sum)
 }
