@@ -29,9 +29,9 @@ func main() {
 		nums = append(nums, perline)
 	}
 
-	var sum int
+	var sum int = 0
 	for i := 0; i < len(nums); i++ {
-		sum += sum + nums[i]
+		sum += nums[i]/3 - 2
 	}
 
 	fmt.Println(sum)
