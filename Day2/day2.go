@@ -28,5 +28,22 @@ func main() {
 		nums = append(nums, perline)
 	}
 
-	fmt.Println(nums)
+	nums[1] = 12
+	nums[2] = 2
+
+	for i := 0; i < len(nums); i += 4 {
+		if nums[i] == 1 {
+			add := nums[nums[i+1]] + nums[nums[i+2]]
+			nums[nums[i+3]] = add
+		}
+		if nums[i] == 2 {
+			multiply := nums[nums[i+1]] * nums[nums[i+2]]
+			nums[nums[i+3]] = multiply
+		}
+		if nums[i] == 99 {
+			break
+		}
+	}
+
+	fmt.Println("Part 1 puzzle answer: ", nums[0])
 }
