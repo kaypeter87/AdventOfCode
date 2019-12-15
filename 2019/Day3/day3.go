@@ -28,4 +28,6 @@ func main() {
 		nums = append(nums, perline)
 	}
 
+	var test
+
 }
